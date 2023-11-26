@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel {
+            height: 300px;
+            width: 400px;
+            border: 2px solid black;
+            display: flex;
+            position: relative;
+            border-radius: 5px;
+        }
+
+        .btn {
+            border: 2px solid black; 
+            background-color: gray;  
+            border-radius: 50px;      
+        }
+
+        .right-btn {
+            position: absolute;
+            right: 0%;
+            top: 50%;
+            height: 50px;
+            width: 50px;
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .left-btn {
+            position: absolute;
+            top: 50%;
+            height: 50px;
+            width: 50px;
+            text-align: center;
+            padding-top: 10px;
+        }
+
+        .current-image {
+           width: 100%;
+
+        }
+    </style>
+
+</head>
+<body>
+    <div class="carousel">
+        <div class="left-btn btn">left</div>
+        <img class="current-image" src="" alt="" />
+        <div class="right-btn btn">right</div>
+    </div>
+
+    <script>
+        let imageSources = ["Project-04/images/download.jpg", "Project-04/images/home.jpg", "Project-04/images/laptop.jpg", "Project-04/images/electronics.jpg"];
+        
+        let imageIndex = 0;
+        updateUI();
+
+        function moveRight () {
+            imageIndex = imageIndex + 1;
+            // if (imageIndex > 3) {
+            //     imageIndex = 0;
+            // }
+            if (imageIndex > imageSources.length -1) {
+                imageIndex = 0;
+            }
+            updateUI();
+        }
+
+        function moveLeft () {
+            imageIndex = imageIndex - 1;
+            // if (imageIndex < 0) {
+            //     imageIndex = 3;
+            // }
+            if (imageIndex < 0) {
+                imageIndex = imageSources.length -1;
+            }
+            updateUI();
+        }
+
+        function updateUI() {
+        document.querySelector('.carousel img').src = imageSources[imageIndex];
+        }
+
+        let leftBtn = document.querySelector('.left-btn');
+        leftBtn.addEventListener('click', moveLeft);
+
+        let rightBtn = document.querySelector('.right-btn');
+        rightBtn.addEventListener('click', moveRight);
+
+
+    </script>
+</body>
+</html>

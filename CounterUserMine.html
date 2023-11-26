@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        .counter {
+            height: 350px;
+            width: 300px;
+            border: 2px solid red;
+            margin: auto;
+            margin-top: 200px;
+        }
+
+        .input {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            padding-top: 40px;
+            height: 80px;
+            
+        }
+
+        .input p {
+
+            padding-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .output {
+            height: 60px;
+            width: 250px;
+            border: 2px solid green;
+            margin-left: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+            text-align: center;
+            padding-top: 15px;
+        }
+
+        .buttons {
+            height: 80px;
+            width: 250px;
+            border: 2px solid green;
+            margin-left: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+            display: flex;
+            gap: 20px;
+            padding-top: 20px;
+            justify-content: center;
+        }
+
+        .buttons .sub {
+            border: 2px solid red;
+            width: 60px;
+            height: 50%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .buttons .add {
+            border: 2px solid red;
+            width: 60px;
+            height: 50%;
+            display: flex;
+            justify-content: center;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="counter">
+    <div class="input">
+        <p>Input:</p>
+        <input type="number" id="inputNumber">
+    </div>
+
+    <div class="output">
+        <p>Output</p>
+    </div>
+
+    <div class="buttons">
+        <div class="add" onclick="addToOutput(1)">
+            <p>+</p>
+        </div>
+
+        <div class="sub" onclick="addToOutput(-1)">
+            <p>-</p>
+        </div>
+    </div>
+</div>
+
+<script>
+    const startingPoint = 0;
+    let currentOutput = startingPoint;
+
+    const output = document.querySelector('.output');
+
+    function addToOutput(amount) {
+        // retrieves the HTML element with the ID 'inputNumber'
+        const inputNumber = document.getElementById('inputNumber');
+        // extracts the value entered by the user in the input element (inputNumber.value)
+        const inputValue = parseInt(inputNumber.value) || 0; // Parse input value as an integer, default to 0 if not a valid number
+        currentOutput = currentOutput + amount * inputValue;
+        updateUI();
+    }
+
+    function updateUI() {
+        output.innerHTML = currentOutput;
+    }
+</script>
+
+</body>
+</html>

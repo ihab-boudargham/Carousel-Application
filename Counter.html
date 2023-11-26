@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        .counter {
+            height: 350px;
+            width: 300px;
+            border: 2px solid red;
+            margin: auto;
+            margin-top: 200px;
+
+        }
+
+        .title {
+            height: 60px;
+            width: 250px;
+            border: 2px solid green;
+            margin-left: 20px;
+            margin-top: 40px;
+            border-radius: 5px;
+            
+
+        }
+
+        .title p {
+            display: flex;
+            justify-content: center;
+            padding-top: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .output {
+            height: 60px;
+            width: 250px;
+            border: 2px solid green;
+            margin-left: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+            text-align: center;
+            padding-top: 15px;
+            
+
+        }
+
+        .buttons {
+            height: 80px;
+            width: 250px;
+            border: 2px solid green;
+            margin-left: 20px;
+            margin-top: 30px;
+            border-radius: 5px;
+            display: flex;
+            gap: 20px;
+            padding-top: 20px;
+            justify-content: center;
+
+        }
+
+        .buttons .sub{
+            border: 2px solid red;
+            width:60px;
+            height: 50%;
+        }
+
+        .buttons .add{
+            border: 2px solid red;
+            width: 60px;
+            height: 50%;
+        }
+
+        .buttons .add5{
+            border: 2px solid red;
+            width: 60px;
+            height: 50%;
+        }
+
+        .buttons p {
+            padding-top: 5px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="counter">
+        <div class="title">
+            <p>Counter App</p>
+        </div>
+
+        <div class="output">
+            <p>--</p>
+        </div>
+
+        <div class="buttons">
+            <div class="add">
+                <p>+</p>
+            </div>
+
+            <div class="sub">
+                <p>-</p>
+            </div>
+
+            <div class="add5">
+                <p>add(5)</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const startingPoint = 0;
+        let currentOutput = startingPoint;
+
+        const output = document.querySelector('.output')
+        output.innerHTML = currentOutput; /* to change the value */
+
+        function add () {
+            currentOutput = currentOutput + 1;
+            // output.innerHTML = currentOutput;
+            updateUI ();
+        }
+
+        function sub () {
+            currentOutput = currentOutput - 1;
+            // output.innerHTML = currentOutput;
+            updateUI ();
+        }
+
+        function add5 () {
+            currentOutput = currentOutput + 5;
+            // output.innerHTML = currentOutput;
+            updateUI ();
+        }
+
+        //  console: add() ; it should add one after each add()
+
+        // to connect to the buttons
+        document.querySelector('.add').addEventListener('click',add)
+        document.querySelector('.sub').addEventListener('click',sub)
+        document.querySelector('.add5').addEventListener('click',add5)
+    
+    // we create a fucntion to uodate the values without repeating the same syntax
+   
+    function updateUI () {
+        output.innerHTML = currentOutput;
+    }
+    
+    // if we want to add the amount from the user
+    function addToOutput (amount) {
+        currentOutput = currentOutput + amount;
+    }
+
+    document.querySelector('add').addEventListener('click',function(){addToOutput(1)})
+
+    document.querySelector('add').addEventListener('click',function(){addToOutput(-1)})
+
+    </script>
+
+</body>
+</html>
